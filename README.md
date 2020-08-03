@@ -2,11 +2,18 @@
 
 ## users テーブル
 
-| Column            | Type    | Options     |
-| ----------------- | ------- | ----------- |
-| name              | string  | null: false |
-| email             | string  | null: false |
-| password          | string  | null: false |
+| Column                | Type   | Options     |
+| --------------------- | ------ | ----------- |
+| nickname              | string | null: false |
+| email                 | string | null: false |
+| password              | string | null: false |
+| password-confirmation | string | null: false |
+| family-name           | string | null: false |
+| last-name             | string | null: false |
+| family-name-furigana  | string | null: false |
+| last-name-furigana    | string | null: false |
+
+
 
 ### Association
 
@@ -16,12 +23,12 @@
 
 ## profiles テーブル
 
-| Column            | Type      | Options |
-| ----------------- | --------- | ------- |
-| phon-number       | integer   |         |
-| address           | string    |         |
-| self-introduction | string    |         |
-| user              | reference |         |
+| Column            | Type       | Options |
+| ----------------- | ---------- | ------- |
+| phon-number       | integer    |         |
+| address           | string     |         |
+| self-introduction | string     |         |
+| user              | references |         |
 
 ### Association
 
@@ -29,13 +36,13 @@
 
 ## items テーブル
 
-| Column  | Type      | Options     |
-| ------- | --------- | ------------|
-| name    | string    | null: false |
-| price   | integer   | null: false |
-| status  | string    | null: false |
-| content | string    | null: false |
-| user    | reference |             |
+| Column      | Type       | Options     |
+| ----------- | ---------- | ----------- |
+| image       | text       | null: false |
+| name        | string     | null: false |
+| explanation | string     | null: false |
+| price       | integer    | null: false |
+| user        | references |             |
 
 ### Association
 
@@ -44,11 +51,11 @@
 
 ## comments テーブル
 
-| Column | Type      | Options     |
-| ------ | --------- | ------------|
-| text   | string    | null: false |
-| user   | reference |             |
-| item   | reference |             |
+| Column | Type       | Options     |
+| ------ | ---------- | ------------|
+| text   | string     | null: false |
+| user   | references |             |
+| item   | references |             |
 
 ### Association
 
