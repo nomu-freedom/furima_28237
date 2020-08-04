@@ -43,7 +43,7 @@
 | explanation        | text       | null: false       |
 | category_id        | integer    | null: false       |
 | status_id          | integer    | null: false       |
-| delivery_fee-_d    | integer    | null: false       |
+| delivery_fee_id    | integer    | null: false       |
 | shipping_origin_id | integer    | null: false       |
 | until_shipping_id  | integer    | null: false       | 
 | price              | integer    | null: false       |
@@ -87,7 +87,7 @@
 | city             | string     | null: false       |
 | address          | string     | null: false       |
 | building_name    | string     |                   |
-| phone-number     | integer    | null: false       |
+| phone_number     | integer    | null: false       |
 | item             | references | foreign_key: ture |
 
 ### Association
