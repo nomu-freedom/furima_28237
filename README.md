@@ -10,8 +10,8 @@
 | password_confirmation | string  | null: false |
 | family_name           | string  | null: false |
 | last_name             | string  | null: false |
-| f_name_furigana       | string  | null: false |
-| l_name_furigana       | string  | null: false |
+| family_name_leading   | string  | null: false |
+| last_name_leading     | string  | null: false |
 | birthday              | date    | null: false |
 
 
@@ -19,20 +19,6 @@
 
 - has_many :items
 - has_many :comments
-- has_one :profile
-
-## profiles テーブル
-
-| Column            | Type       | Options           |
-| ----------------- | ---------- | ----------------- |
-| phon_number       | string     |                   |
-| address           | string     |                   |
-| self_introduction | text       |                   |
-| user              | references | foreign_key: true |
-
-### Association
-
-- belongs_to :user
 
 ## items テーブル
 
@@ -82,12 +68,12 @@
 
 ## domiciles テーブル
 
-| postal_ocode     | string     | null: false       |
+| postal_code      | string     | null: false       |
 | prefectures_id   | integer    | null: false       |
 | city             | string     | null: false       |
 | address          | string     | null: false       |
 | building_name    | string     |                   |
-| phone_number     | integer    | null: false       |
+| phone_number     | string     | null: false       |
 | item             | references | foreign_key: ture |
 
 ### Association
