@@ -36,18 +36,18 @@
 
 ## items テーブル
 
-| Column          | Type       | Options           |
-| --------------- | ---------- | ----------------- |
-| image           | text       | null: false       |
-| name            | string     | null: false       |
-| explanation     | text       | null: false       |
-| category        | string     | null: false       |
-| status          | string     | null: false       |
-| delivery-fee    | string     | null: false       |
-| shipping-origin | string     | null: false       |
-| until-shipping  | integer    | null: false       | 
-| price           | integer    | null: false       |
-| user            | references | foreign_key: true |
+| Column             | Type       | Options           |
+| ------------------ | ---------- | ----------------- |
+| image              | text       | null: false       |
+| name               | string     | null: false       |
+| explanation        | text       | null: false       |
+| category-id        | integer    | null: false       |
+| status-id          | integer    | null: false       |
+| delivery-fee-id    | integer    | null: false       |
+| shipping-origin-id | integer    | null: false       |
+| until-shipping-id  | integer    | null: false       | 
+| price              | integer    | null: false       |
+| user               | references | foreign_key: true |
 
 ### Association
 
@@ -56,11 +56,11 @@
 
 ## comments テーブル
 
-| Column | Type       | Options     |
-| ------ | ---------- | ------------|
-| text   | string     | null: false |
-| user   | references |             |
-| item   | references |             |
+| Column | Type       | Options           |
+| ------ | ---------- | ----------------- |
+| text   | string     | null: false       |
+| user   | references | foreign_key: true |
+| item   | references | foreign_key: true |
 
 ### Association
 
@@ -69,21 +69,28 @@
 
 ## purchases テーブル
 
-| Column         | Type       | Options           |
-| -------------- | ---------- | ----------------- |
-| price          | integer    | null: false       |
-| postal-ocode   | integer    | null: false       |
-| prefectures    | string     | null: false       |
-| city           | string     | null: false       |
-| address        | string     | null: false       |
-| building-name  | string     |                   |
-| phone-number   | integer    | null: false       |
-| user           | references | foreign_key: ture |
-| item           | references | foreign_key: ture |
+| Column           | Type       | Options           |
+| ---------------- | ---------- | ----------------- |
+| card-information | integer    | null: false       |
+| user             | references | foreign_key: ture |
+| item             | references | foreign_key: ture |
 
 ### Association
 
 - belongs_to :user
 - belongs_to :item
+- has_one :domiciles
 
+## domiciles テーブル
 
+| postal-ocode     | integer    | null: false       |
+| prefectures-id   | integer    | null: false      |
+| city             | string     | null: false       |
+| address          | string     | null: false       |
+| building-name    | string     |                   |
+| phone-number     | integer    | null: false       |
+| purchases        | references | foreign_key: ture |
+
+### Association
+
+- belongs_to :purchases
