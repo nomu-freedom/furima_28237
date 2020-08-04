@@ -7,11 +7,11 @@
 | nickname              | string  | null: false |
 | email                 | string  | null: false |
 | password              | string  | null: false |
-| password-confirmation | string  | null: false |
-| family-name           | string  | null: false |
-| last-name             | string  | null: false |
-| f-name-furigana       | string  | null: false |
-| l-name-furigana       | string  | null: false |
+| password_confirmation | string  | null: false |
+| family_name           | string  | null: false |
+| last_name             | string  | null: false |
+| f_name_furigana       | string  | null: false |
+| l_name_furigana       | string  | null: false |
 | birthday              | date    | null: false |
 
 
@@ -25,9 +25,9 @@
 
 | Column            | Type       | Options           |
 | ----------------- | ---------- | ----------------- |
-| phon-number       | integer    |                   |
+| phon_number       | string     |                   |
 | address           | string     |                   |
-| self-introduction | text       |                   |
+| self_introduction | text       |                   |
 | user              | references | foreign_key: true |
 
 ### Association
@@ -41,11 +41,11 @@
 | image              | text       | null: false       |
 | name               | string     | null: false       |
 | explanation        | text       | null: false       |
-| category-id        | integer    | null: false       |
-| status-id          | integer    | null: false       |
-| delivery-fee-id    | integer    | null: false       |
-| shipping-origin-id | integer    | null: false       |
-| until-shipping-id  | integer    | null: false       | 
+| category_id        | integer    | null: false       |
+| status_id          | integer    | null: false       |
+| delivery_fee-_d    | integer    | null: false       |
+| shipping_origin_id | integer    | null: false       |
+| until_shipping_id  | integer    | null: false       | 
 | price              | integer    | null: false       |
 | user               | references | foreign_key: true |
 
@@ -53,6 +53,7 @@
 
 - has_many :comments
 - belongs_to :user
+- has_one :domicile
 
 ## comments テーブル
 
@@ -71,7 +72,6 @@
 
 | Column           | Type       | Options           |
 | ---------------- | ---------- | ----------------- |
-| card-information | integer    | null: false       |
 | user             | references | foreign_key: ture |
 | item             | references | foreign_key: ture |
 
@@ -79,18 +79,17 @@
 
 - belongs_to :user
 - belongs_to :item
-- has_one :domiciles
 
 ## domiciles テーブル
 
-| postal-ocode     | integer    | null: false       |
-| prefectures-id   | integer    | null: false      |
+| postal_ocode     | string     | null: false       |
+| prefectures_id   | integer    | null: false       |
 | city             | string     | null: false       |
 | address          | string     | null: false       |
-| building-name    | string     |                   |
+| building_name    | string     |                   |
 | phone-number     | integer    | null: false       |
-| purchases        | references | foreign_key: ture |
+| item             | references | foreign_key: ture |
 
 ### Association
 
-- belongs_to :purchases
+- belongs_to :item
