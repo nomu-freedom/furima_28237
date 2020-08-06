@@ -20,7 +20,8 @@ class User < ApplicationRecord
     end
     validates :email, uniqueness: { case_sensitive: false },
                       format: { with: /\A[a-zA-Z0-9_\#!$%&`'*+\-{|}~^\/=?\.]+@[a-zA-Z0-9][a-zA-Z0-9\.-]+\z/}
-    validates :nickname, format: { with: /\A[a-zA-Z0-9]+\z/ }
+    validates :nickname, uniqueness: { case_sensitive: false },
+                         format: { with: /\A[a-zA-Z0-9]+\z/ }
     validates :birthday
   end
 end
