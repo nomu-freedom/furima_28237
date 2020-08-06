@@ -9,7 +9,8 @@ class User < ApplicationRecord
       validates :family_name
       validates :last_name
     end
-    with_options format: { with: /\A[ァ-ヶー－]+\z/} do
+    word = /\A[ァ-ヶー－]+\z/
+    with_options format: { with: word} do
       validates :family_name_leading
       validates :last_name_leading
     end
@@ -19,6 +20,7 @@ class User < ApplicationRecord
     end
     validates :email, uniqueness: { case_sensitive: false },
                       format: { with: /\A[a-zA-Z0-9_\#!$%&`'*+\-{|}~^\/=?\.]+@[a-zA-Z0-9][a-zA-Z0-9\.-]+\z/}
-    validates :nickname, :birthday
+    validates :nickname, format: { with: /\A[a-zA-Z0-9]+\z/ }
+    validates :birthday
   end
 end

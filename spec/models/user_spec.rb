@@ -56,6 +56,18 @@ describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include ("Password is invalid" && "Password confirmation is invalid")
       end
+      it "半角英数字混合じゃないと登録できない" do
+        @user.password = "aaaaaa"
+        @user.password_confirmation = "aaaaaa"
+        @user.valid?
+        expect(@user.errors.full_messages).to include ("Password is invalid" && "Password confirmation is invalid")
+      end
+      it "半角英数字混合じゃないと登録できない" do
+        @user.password = "111111"
+        @user.password_confirmation = "111111"
+        @user.valid?
+        expect(@user.errors.full_messages).to include ("Password is invalid" && "Password confirmation is invalid")
+      end
       it "苗字が空だと登録できない" do
         @user.family_name = ""
         @user.valid?
@@ -86,6 +98,11 @@ describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include ("Family name leading is invalid")
       end
+      it "苗字のフリガナはカタカナじゃないと登録できない" do
+        @user.family_name_leading = "ｼﾞｪｲｿﾝ"
+        @user.valid?
+        expect(@user.errors.full_messages).to include ("Family name leading is invalid")
+      end
       it "下の名前のフリガナは空だと登録できない" do
         @user.last_name_leading = ""
         @user.valid?
@@ -93,6 +110,11 @@ describe User, type: :model do
       end
       it "下の名前のフリガナはカタカナじゃないと登録できない" do
         @user.last_name_leading = "じょな"
+        @user.valid?
+        expect(@user.errors.full_messages).to include ("Last name leading is invalid")
+      end
+      it "下の名前のフリガナはカタカナじゃないと登録できない" do
+        @user.last_name_leading = "ｼﾞｮﾅ"
         @user.valid?
         expect(@user.errors.full_messages).to include ("Last name leading is invalid")
       end
