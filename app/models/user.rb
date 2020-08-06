@@ -10,8 +10,8 @@ class User < ApplicationRecord
       validates :last_name
     end
     with_options format: { with: /\A[ァ-ヶー－]+\z/} do
-      validates :family_name_reading
-      validates :last_name_reading
+      validates :family_name_leading
+      validates :last_name_leading
     end
     with_options format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{6,}+\z/i} do
       validates :password
