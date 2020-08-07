@@ -24,4 +24,6 @@ class User < ApplicationRecord
                          format: { with: /\A[a-zA-Z0-9]+\z/ }
     validates :birthday
   end
+
+  has_many :items
 end
