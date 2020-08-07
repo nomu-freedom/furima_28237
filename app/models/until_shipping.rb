@@ -1,0 +1,2 @@
+class UntilShipping < ApplicationRecord
+end
