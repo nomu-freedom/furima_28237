@@ -4,12 +4,7 @@ class Item < ApplicationRecord
     validates :image
     validates :name
     validates :explanation
-    #validates :category
-    #validates :delivery_fee
-    #validates :shipping_origin
-    #validates :status
-    #validates :until_shipping
-    validates :price, numericality: { only_integer: true, :greater_than_or_equal_to => 300, :less_than => 10000000 }
+    validates :price, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than: 10000000 }
   end
 
   
