@@ -10,15 +10,18 @@ before_action :move_to_index, expect: [:index, :show]
   end
   
   def create
-    if Item.create(item_params)
+    @item = Item.new(item_params)
+    if @item.save
       redirect_to root_path
+    else
+      render :new
     end
   end
 
   private
 
   def item_params
-    params.require(:item).permit(:name, :explanation, :image, :category_id, :status_id, :delivery_fee_id, :until_shipping_id, :shipping_origin_id, :price )
+    params.require(:item).permit(:name, :explanation, :image, :category_id, :status_id, :delivery_fee_id, :until_shipping_id, :shipping_origin_id, :price ).merge(user_id: current_user.id)
   end
 
   def move_to_index
