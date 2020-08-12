@@ -33,8 +33,8 @@
     <% end %>
 
     <%# 商品が売れていない場合はこちらを表示しましょう %>
-    <% if @item == false %>
-      <% if @item.user_id != current_user.id %>
+    <% if user_signed_in? && current_user.id != @item.user_id   %>
+      <% if @item == false %>
         <%= link_to '購入画面に進む', "#" ,class:"item-red-btn"%>
       <% end %>
     <% end %>
