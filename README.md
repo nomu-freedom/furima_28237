@@ -54,10 +54,11 @@
 - belongs_to :user
 - belongs_to :item
 
-## purchases テーブル
+## sale テーブル
 
 | Column           | Type       | Options           |
 | ---------------- | ---------- | ----------------- |
+| sold             | boolean    | null: false       |
 | user             | references | foreign_key: ture |
 | item             | references | foreign_key: ture |
 
