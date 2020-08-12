@@ -3,7 +3,6 @@ before_action :move_to_index, except: [:index, :show]
 
   def index
     @items = Item.all.order("created_at DESC")
-    @item = Item.select(:sold)
   end
 
   def new
