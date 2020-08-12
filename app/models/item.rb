@@ -1,5 +1,7 @@
 class Item < ApplicationRecord
-  
+  belongs_to :user
+  has_one_attached :image
+
   with_options presence: true do
     validates :image
     validates :name
@@ -22,7 +24,4 @@ class Item < ApplicationRecord
   belongs_to_active_hash :shipping_origin
   belongs_to_active_hash :status
   belongs_to_active_hash :until_shipping
-
-  belongs_to :user
-  has_one_attached :avatar
 end
