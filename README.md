@@ -19,6 +19,7 @@
 
 - has_many :items
 - has_many :comments
+- has_many :orders
 
 ## items テーブル
 
@@ -40,6 +41,7 @@
 - has_many :comments
 - belongs_to :user
 - has_one :domicile
+- has_one :order
 
 ## comments テーブル
 
@@ -54,11 +56,10 @@
 - belongs_to :user
 - belongs_to :item
 
-## sale テーブル
+## orders テーブル
 
 | Column           | Type       | Options           |
 | ---------------- | ---------- | ----------------- |
-| sold             | boolean    | null: false       |
 | user             | references | foreign_key: ture |
 | item             | references | foreign_key: ture |
 
