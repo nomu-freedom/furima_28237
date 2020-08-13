@@ -34,6 +34,15 @@ before_action :move_to_index, except: [:index, :show]
       render :edit
     end
   end
+  
+  def destroy
+    @item = Item.find(params[:id])
+    if @item.destroy
+      redirect_to root_path
+    else
+      render :show
+    end
+  end
 
   private
 
