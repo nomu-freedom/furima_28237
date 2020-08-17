@@ -9,7 +9,7 @@
     <div class='item-img-content'>
       <%= image_tag @item.image ,class:"item-box-img" %>
       <%# 商品が売れている場合は、sould outの表示をしましょう。 %>
-      <% if @item == true %>
+      <% if @item.sold == true %>
         <div class='sold-out'>
           <span>Sold Out!!</span>
         </div>
@@ -34,8 +34,8 @@
 
     <%# 商品が売れていない場合はこちらを表示しましょう %>
     <% if user_signed_in? && current_user.id != @item.user_id   %>
-      <% if @item == false %>
-        <%= link_to '購入画面に進む', "#" ,class:"item-red-btn"%>
+      <% if @item.sold != true %>
+        <%= link_to '購入画面に進む', item_orders_path(@item.id) ,class:"item-red-btn" %>
       <% end %>
     <% end %>
     <%# //商品が売れていない場合はこちらを表示しましょう %>
