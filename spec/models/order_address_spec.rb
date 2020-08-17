@@ -33,6 +33,11 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Shipping origin can't be blank")
       end
+      it "都道府県がnilの場合" do
+        @order_address.shipping_origin_id = nil
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Shipping origin can't be blank")
+      end
       it "市区町村の情報が空の時" do
         @order_address.city = ""
         @order_address.valid?
