@@ -41,7 +41,7 @@ before_action :set_items, only: [:show, :edit, :destroy, :update]
     end
   end
 
-  private
+  protected
 
   def item_params
     params.require(:item).permit(:name, :explanation, :image, :category_id, :status_id, :delivery_fee_id, :until_shipping_id, :shipping_origin_id, :price ).merge(user_id: current_user.id)

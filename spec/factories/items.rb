@@ -1,6 +1,5 @@
 FactoryBot.define do
   factory :item do
-    image {"ales-nesetril-Im7lZjxeLhg-unsplash.jpg"}
     name {"パソコン"}
     explanation {"パソコンです"}
     category_id {"2"}
