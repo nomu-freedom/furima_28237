@@ -4,29 +4,30 @@ const pay = () => {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    const formResult = document.getElementById("charge-form") //なぜ再代入？？
+    const formResult = document.getElementById("charge-form"); 
     const formData = new FormData(formResult);
 
     const card = {
-      numaber: formData.get("number"),
-      cvc: formData.get("cvc"),
-      exp_month: formData.get("exp_month"),
-      exp_year: `20${formData.get("exp_year")}`,
+      number: formData.get("order_address[number]"),
+      cvc: formData.get("order_address[cvc]"),
+      exp_month: formData.get("order_address[exp_month]"),
+      exp_year: `20${formData.get("order_address[exp_year]")}`,
     };
+    console.log(card)
 
     Payjp.createToken(card, (status, response) => {
       if (status === 200) {
         const token = response.id;
-        const renderDom = document.getElementsById("charge-form");
+        const renderDom = document.getElementById("charge-form");
         const tokenObj = `<input value=${token} type="hidden" name='token'>`;
         renderDom.insertAdjacentHTML("beforeend", tokenObj);
 
-        document.getElementById("number").removeAttribute("name");
-        document.getElementById("cvc").removeAttribute("name");
-        document.getElementById("exp_month").removeAttribute("name");
-        document.getElementById("exp_year").removeAttribute("name");
+        document.getElementById("card-number").removeAttribute("name");     //入力した値がparamsに入らないように削除
+        document.getElementById("card-cvc").removeAttribute("name");
+        document.getElementById("card-exp-month").removeAttribute("name");
+        document.getElementById("card-exp-year").removeAttribute("name");
 
-        document.getElementById("charge-form").submit();
+        document.getElementById("charge-form").submit();   //最後にボタンをクリックして実行
         document.getElementById("charge-form").reset();
       } else {
       }
